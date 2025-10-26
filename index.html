@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cinta untukmu 💘</title>
+  <!-- Musik romantis -->
+  <audio id="loveMusic" loop>
+    <source src="love-romantic-hopeful-music-333017.mp3" type="audio/mpeg">
+    Browser kamu tidak mendukung audio 😢
+  </audio>
+<style>
+  body {
+    font-family: "Comic Sans MS", cursive;
+    background-color: pink;
+    text-align: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Efek hati beterbangan */
+  .heart {
+    position: fixed;
+    bottom: -10px;
+    color: red;
+    font-size: 20px;
+    opacity: 0.8;
+    animation: floatUp 5s linear infinite;
+    z-index: 0;
+  }
+
+  @keyframes floatUp {
+    0% {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-110vh) scale(1.5);
+      opacity: 0;
+    }
+  }
+
+  h1 {
+    color: white;
+    text-shadow: 2px 2px 5px hotpink;
+    font-size: 2.5em;
+    animation: heartBeat 2s infinite;
+    z-index: 1;
+  }
+
+  @keyframes heartBeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+
+  button {
+    font-family: "Comic Sans MS", cursive;
+    font-size: 1.2em;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 10px;
+    z-index: 2;
+  }
+
+  #startBtn {
+    background-color: hotpink;
+    color: white;
+    box-shadow: 0 4px 10px rgba(255, 20, 147, 0.4);
+  }
+  #startBtn:hover {
+    transform: scale(1.1);
+    background-color: deeppink;
+  }
+
+  #question {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeIn 1s ease-in;
+  }
+
+  #yesBtn {
+    background-color: deeppink;
+    color: white;
+    box-shadow: 0 4px 10px rgba(255, 20, 147, 0.3);
+  }
+  #yesBtn:hover {
+    transform: scale(1.2);
+    background-color: crimson;
+  }
+
+  #noBtn {
+    background-color: white;
+    color: deeppink;
+    box-shadow: 0 4px 10px rgba(255, 20, 147, 0.3);
+    position: absolute;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+  <h1>💞 Website Cinta Sederhana 💞</h1>
+
+  <button id="startBtn">Klik untuk lihat 💌</button>
+
+  <div id="question">
+    <h2>Maukah kamu jadi pacarku? 💕</h2>
+    <div>
+      <button id="yesBtn">lyaaaa 💖</button>
+      <button id="noBtn">Gak dulu 😝</button>
+    </div>
+  </div>
+
+  <script>
+    const startBtn = document.getElementById('startBtn');
+    const question = document.getElementById('question');
+    const noBtn = document.getElementById('noBtn');
+    const yesBtn = document.getElementById('yesBtn');
+    const music = document.getElementById('loveMusic');
+
+    // Tampilkan pertanyaan & mulai musik
+    startBtn.addEventListener('click', () => {
+      startBtn.style.display = 'none';
+      question.style.display = 'flex';
+      music.play().catch(() => {
+        console.log("Autoplay diblokir, klik interaksi diperlukan.");
+      });
+    });
+
+    // Tombol "Gak dulu" kabur
+    noBtn.addEventListener('mouseover', () => {
+      const areaWidth = window.innerWidth - noBtn.offsetWidth - 20;
+      const areaHeight = window.innerHeight - noBtn.offsetHeight - 20;
+
+      let newX = Math.random() * areaWidth;
+      let newY = Math.random() * areaHeight;
+
+      // Hindari area tombol "lyaaaa"
+      const yesRect = yesBtn.getBoundingClientRect();
+      const buffer = 100;
+      if (
+        newX > yesRect.left - buffer && newX < yesRect.right + buffer &&
+        newY > yesRect.top - buffer && newY < yesRect.bottom + buffer
+      ) {
+        newX = yesRect.right + buffer;
+        newY = yesRect.bottom + buffer;
+      }
+
+      noBtn.style.left = `${newX}px`;
+      noBtn.style.top = `${newY}px`;
+    });
+
+    // Klik tombol "lyaaaa"
+    yesBtn.addEventListener('click', () => {
+      document.body.innerHTML = `
+        <h1 style="color:white; text-shadow:2px 2px 5px red;">💞 Aku juga sayang kamu 💞</h1>
+        <p style="font-size:1.5em;">Kita resmi jadian sekarang 😘</p>
+      `;
+      music.play();
+      createHeartsForever();
+    });
+
+    // Efek hati beterbangan
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.textContent = '💖';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = Math.random() * 20 + 15 + 'px';
+      heart.style.animationDuration = Math.random() * 3 + 3 + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }
+
+    function createHeartsForever() {
+      setInterval(createHeart, 300);
+    }
+
+    setInterval(createHeart, 500);
+  </script>
+
+</body>
+</html>
