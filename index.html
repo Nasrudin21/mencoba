@@ -3,25 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cinta untukmu 💘</title>
-  <!-- Musik romantis -->
-  <audio id="loveMusic" loop>
-    <source src="love-romantic-hopeful-music-333017.mp3" type="audio/mpeg">
-    Browser kamu tidak mendukung audio 😢
-  </audio>
+<title>Bocils</title>
 <style>
-  body {
-    font-family: "Comic Sans MS", cursive;
-    background-color: pink;
-    text-align: center;
-    height: 100vh;
-    margin: 0;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+body {
+  font-family: "Comic Sans MS", cursive;
+  text-align: center;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  /* 🩷 Ganti warna jadi foto kamu */
+  background: url('yyyyy1.jpg') no-repeat center center/cover;
+  background-attachment: fixed; /* supaya tetap saat scroll */
+}
+
 
   /* Efek hati beterbangan */
   .heart {
@@ -47,7 +45,7 @@
 
   h1 {
     color: white;
-    text-shadow: 2px 2px 5px hotpink;
+    text-shadow: 2px 2px 5px rgb(255, 105, 105);
     font-size: 2.5em;
     animation: heartBeat 2s infinite;
     z-index: 1;
@@ -71,13 +69,13 @@
   }
 
   #startBtn {
-    background-color: hotpink;
+    background-color: rgb(255, 105, 118);
     color: white;
     box-shadow: 0 4px 10px rgba(255, 20, 147, 0.4);
   }
   #startBtn:hover {
     transform: scale(1.1);
-    background-color: deeppink;
+    background-color: rgb(255, 20, 59);
   }
 
   #question {
@@ -112,15 +110,21 @@
 </head>
 <body>
 
-  <h1>💞 Website Cinta Sederhana 💞</h1>
+  <!-- Musik romantis -->
+  <audio id="loveMusic" loop>
+    <source src="love-romantic-hopeful-music-333017.mp3" type="audio/mpeg">
+    Browser kamu tidak mendukung audio 😢
+  </audio>
+
+  <h1>Apakah dirimu ingin sehat?</h1>
 
   <button id="startBtn">Klik untuk lihat 💌</button>
 
   <div id="question">
-    <h2>Maukah kamu jadi pacarku? 💕</h2>
+    <h2>Kalu nak sehat cepet sembuh teken ini eeeee </h2>
     <div>
       <button id="yesBtn">lyaaaa 💖</button>
-      <button id="noBtn">Gak dulu 😝</button>
+      <button id="noBtn">Gak mau sembuh 😝</button>
     </div>
   </div>
 
@@ -166,8 +170,8 @@
     // Klik tombol "lyaaaa"
     yesBtn.addEventListener('click', () => {
       document.body.innerHTML = `
-        <h1 style="color:white; text-shadow:2px 2px 5px red;">💞 Aku juga sayang kamu 💞</h1>
-        <p style="font-size:1.5em;">Kita resmi jadian sekarang 😘</p>
+        <h1 style="color:white; text-shadow:1px 1px 3px red;"> Jaga kesehatan dak usah nak makan es terus dibilangi masih nak ngeyel minum es terusss,,,makan minum obatnyooo jangan dak makan. </h1>
+        <p style="font-size:3.5em;">Semoga lekas sembuh 🥹🥹🥹🥹</p>
       `;
       music.play();
       createHeartsForever();
@@ -177,7 +181,7 @@
     function createHeart() {
       const heart = document.createElement('div');
       heart.classList.add('heart');
-      heart.textContent = '💖';
+      heart.textContent = '😇😇';
       heart.style.left = Math.random() * 100 + 'vw';
       heart.style.fontSize = Math.random() * 20 + 15 + 'px';
       heart.style.animationDuration = Math.random() * 3 + 3 + 's';
