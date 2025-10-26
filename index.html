@@ -14,119 +14,115 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  /* 🩷 Ganti warna jadi foto kamu */
   background: url('yyyyy1.jpg') no-repeat center center/cover;
-  background-attachment: fixed; /* supaya tetap saat scroll */
+  background-attachment: fixed;
+  overflow: hidden;
 }
 
+/* Efek hati beterbangan */
+.heart {
+  position: fixed;
+  bottom: -10px;
+  color: red;
+  font-size: 20px;
+  opacity: 0.8;
+  animation: floatUp 5s linear infinite;
+  z-index: 0;
+}
 
-  /* Efek hati beterbangan */
-  .heart {
-    position: fixed;
-    bottom: -10px;
-    color: red;
-    font-size: 20px;
-    opacity: 0.8;
-    animation: floatUp 5s linear infinite;
-    z-index: 0;
-  }
+@keyframes floatUp {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
+}
 
-  @keyframes floatUp {
-    0% {
-      transform: translateY(0) scale(1);
-      opacity: 1;
-    }
-    100% {
-      transform: translateY(-110vh) scale(1.5);
-      opacity: 0;
-    }
-  }
+h1 {
+  color: white;
+  text-shadow: 2px 2px 5px rgb(255, 105, 105);
+  font-size: 2.5em;
+  animation: heartBeat 2s infinite;
+  z-index: 1;
+}
 
-  h1 {
-    color: white;
-    text-shadow: 2px 2px 5px rgb(255, 105, 105);
-    font-size: 2.5em;
-    animation: heartBeat 2s infinite;
-    z-index: 1;
-  }
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
 
-  @keyframes heartBeat {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-  }
+button {
+  font-family: "Comic Sans MS", cursive;
+  font-size: 1.2em;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 10px;
+  z-index: 2;
+}
 
-  button {
-    font-family: "Comic Sans MS", cursive;
-    font-size: 1.2em;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin: 10px;
-    z-index: 2;
-  }
+#startBtn {
+  background-color: rgb(255, 105, 118);
+  color: white;
+  box-shadow: 0 4px 10px rgba(255, 20, 147, 0.4);
+}
+#startBtn:hover {
+  transform: scale(1.1);
+  background-color: rgb(255, 20, 59);
+}
 
-  #startBtn {
-    background-color: rgb(255, 105, 118);
-    color: white;
-    box-shadow: 0 4px 10px rgba(255, 20, 147, 0.4);
-  }
-  #startBtn:hover {
-    transform: scale(1.1);
-    background-color: rgb(255, 20, 59);
-  }
+#question {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 1s ease-in;
+}
 
-  #question {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    animation: fadeIn 1s ease-in;
-  }
+#yesBtn {
+  background-color: deeppink;
+  color: white;
+  box-shadow: 0 4px 10px rgba(255, 20, 147, 0.3);
+}
+#yesBtn:hover {
+  transform: scale(1.2);
+  background-color: crimson;
+}
 
-  #yesBtn {
-    background-color: deeppink;
-    color: white;
-    box-shadow: 0 4px 10px rgba(255, 20, 147, 0.3);
-  }
-  #yesBtn:hover {
-    transform: scale(1.2);
-    background-color: crimson;
-  }
+#noBtn {
+  background-color: white;
+  color: deeppink;
+  box-shadow: 0 4px 10px rgba(255, 20, 147, 0.3);
+  position: absolute;
+}
 
-  #noBtn {
-    background-color: white;
-    color: deeppink;
-    box-shadow: 0 4px 10px rgba(255, 20, 147, 0.3);
-    position: absolute;
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 </style>
 </head>
 <body>
 
-  <!-- Musik romantis -->
-  <audio id="loveMusic" loop>
-    <source src="love-romantic-hopeful-music-333017.mp3" type="audio/mpeg">
-    Browser kamu tidak mendukung audio 😢
-  </audio>
-
-  <h1>Apakah dirimu ingin sehat?</h1>
-
-  <button id="startBtn">Klik untuk lihat 💌</button>
-
-  <div id="question">
-    <h2>Kalu nak sehat cepet sembuh teken ini eeeee </h2>
-    <div>
-      <button id="yesBtn">lyaaaa 💖</button>
-      <button id="noBtn">Gak mau sembuh 😝</button>
-    </div>
+  <!-- 🎵 Musik dipisahkan dari area yang akan diubah -->
+  <div id="audioContainer">
+    <audio id="loveMusic" loop>
+      <source src="love-romantic-hopeful-music-333017.mp3" type="audio/mpeg">
+      Browser kamu tidak mendukung audio 😢
+    </audio>
   </div>
+
+  <!-- 🩷 Bagian utama yang bisa berubah -->
+  <main id="mainContent">
+    <h1>Apakah dirimu ingin sehat?</h1>
+    <button id="startBtn">Klik untuk lihat 💌</button>
+
+    <div id="question">
+      <h2>Kalu nak sehat cepet sembuh teken ini eeeee </h2>
+      <div>
+        <button id="yesBtn">lyaaaa 💖</button>
+        <button id="noBtn">Gak mau sembuh 😝</button>
+      </div>
+    </div>
+  </main>
 
   <script>
     const startBtn = document.getElementById('startBtn');
@@ -134,25 +130,30 @@ body {
     const noBtn = document.getElementById('noBtn');
     const yesBtn = document.getElementById('yesBtn');
     const music = document.getElementById('loveMusic');
+    const main = document.getElementById('mainContent');
 
-    // Tampilkan pertanyaan & mulai musik
+    let musicStarted = false;
+    function startMusic() {
+      if (!musicStarted) {
+        music.play().catch(() => {});
+        musicStarted = true;
+      }
+    }
+
+    // Mulai pertanyaan & musik
     startBtn.addEventListener('click', () => {
       startBtn.style.display = 'none';
       question.style.display = 'flex';
-      music.play().catch(() => {
-        console.log("Autoplay diblokir, klik interaksi diperlukan.");
-      });
+      startMusic();
     });
 
-    // Tombol "Gak dulu" kabur
+    // Tombol "Gak mau sembuh" kabur
     noBtn.addEventListener('mouseover', () => {
       const areaWidth = window.innerWidth - noBtn.offsetWidth - 20;
       const areaHeight = window.innerHeight - noBtn.offsetHeight - 20;
-
       let newX = Math.random() * areaWidth;
       let newY = Math.random() * areaHeight;
 
-      // Hindari area tombol "lyaaaa"
       const yesRect = yesBtn.getBoundingClientRect();
       const buffer = 100;
       if (
@@ -167,13 +168,17 @@ body {
       noBtn.style.top = `${newY}px`;
     });
 
-    // Klik tombol "lyaaaa"
+    // Klik tombol "lyaaaa 💖"
     yesBtn.addEventListener('click', () => {
-      document.body.innerHTML = `
-        <h1 style="color:white; text-shadow:1px 1px 3px red;"> Jaga kesehatan dak usah nak makan es terus dibilangi masih nak ngeyel minum es terusss,,,makan minum obatnyooo jangan dak makan. </h1>
-        <p style="font-size:3.5em;">Semoga lekas sembuh 🥹🥹🥹🥹</p>
+      main.innerHTML = `
+        <h1 style="color:white; text-shadow:1px 1px 3px red;">
+          Jaga kesehatan dak usah nak makan es terus 😝<br>
+          Dibilangi masih ngeyel minum es terusss...<br>
+          Makan dan minum obatnya jangan lupa ya 💊💧
+        </h1>
+        <p style="font-size:2.5em;">Semoga lekas sembuh 🥹🥹🥹</p>
       `;
-      music.play();
+      startMusic();
       createHeartsForever();
     });
 
@@ -181,7 +186,7 @@ body {
     function createHeart() {
       const heart = document.createElement('div');
       heart.classList.add('heart');
-      heart.textContent = '😇😇';
+      heart.textContent = '☺️😇';
       heart.style.left = Math.random() * 100 + 'vw';
       heart.style.fontSize = Math.random() * 20 + 15 + 'px';
       heart.style.animationDuration = Math.random() * 3 + 3 + 's';
@@ -193,7 +198,7 @@ body {
       setInterval(createHeart, 300);
     }
 
-    setInterval(createHeart, 500);
+    setInterval(createHeart, 700);
   </script>
 
 </body>
